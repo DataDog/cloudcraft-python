@@ -1,0 +1,10 @@
+Component,Origin,License,Copyright
+Poetry,PyPI,MIT,Copyright (c) 2018-present Sébastien Eustace
+Requests,PyPI,Apache-2.0,Copyright 2019 Kenneth Reitz
+tox,PyPI,MIT,Copyright Bernát Gábor<gaborjbernat@gmail.com>
+pytest,PyPI,MIT,Copyright (c) 2004 Holger Krekel and others
+black,PyPI,MIT,Copyright (c) 2018 Łukasz Langa
+isort,PyPI,MIT,Copyright (c) 2013 Timothy Edmund Crosley
+pytest-mock,PyPI,MIT,Copyright (c) [2016] [Bruno Oliveira]
+pre-commit,PyPI,MIT,Copyright (c) 2014 pre-commit dev team: Anthony Sottile, Ken Struys
+coverage,PyPI,Apache-2.0,Copyright 2001 Gareth Rees. Copyright 2004-2023 Ned Batchelder.
