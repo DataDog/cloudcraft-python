@@ -1,6 +1,6 @@
 # Cloudcraft API Client for Python
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![License: Apache 2.0](https://img.shields.io/badge/License-Apache2.0-yellow.svg)](LICENSE.md)
 [![versions](https://img.shields.io/pypi/pyversions/pybadges.svg)](https://www.python.org/downloads/release/python-3100/)
 [![Build Status](https://github.com/cloudcraft/cloudcraft-python/actions/workflows/build.yaml/badge.svg?branch=main)](https://github.com/cloudcraft/cloudcraft-python/actions?query=branch%3Amain)
 
