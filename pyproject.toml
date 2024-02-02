@@ -7,7 +7,7 @@ repository = "https://github.com/DataDog/cloudcraft_python"
 readme = "README.md"
 license = "Apache-2.0"
 authors = [
-    { name = "Datadog, Inc.", email = "dev@datadoghq.com" },
+    "Datadog, Inc. <dev@datadoghq.com>",
 ]
 maintainers = [
     "Sean Broderick <sean.broderick@cloudcraft.co>",
