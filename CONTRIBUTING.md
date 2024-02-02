@@ -15,4 +15,4 @@ Adhere to the following rules when submitting your PR:
 
 ## License
 
-All contributions are made under [the MIT license](LICENSE.md).
+All contributions are made under [the Apache-2.0 license](LICENSE.md).
