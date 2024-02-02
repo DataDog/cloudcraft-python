@@ -2,7 +2,9 @@
 name = "cloudcraftco"
 version = "0.1.0"
 description = "Python SDK for Cloudcraft API"
-authors = ["Sean Broderick <sean.broderick@cloudcraft.co>"]
+readme = "README.md"
+license = { text = "LICENSE.md" }
+authors = ["Datadog, Inc. <dev@datadoghq.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.10"
