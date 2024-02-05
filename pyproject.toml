@@ -10,7 +10,7 @@ authors = [
     "Datadog, Inc. <dev@datadoghq.com>",
 ]
 maintainers = [
-    "Sean Broderick <sean.broderick@cloudcraft.co>",
+    "Sean Broderick <sean.broderick@datadoghq.com>",
 ]
 keywords = [
     "datadog",
