@@ -2,7 +2,7 @@
 
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache2.0-yellow.svg)](LICENSE.md)
 [![versions](https://img.shields.io/pypi/pyversions/cloudcraftco)](https://www.python.org/downloads/release/python-3100/)
-[![Build Status](https://github.com/cloudcraft/cloudcraft-python/actions/workflows/build.yaml/badge.svg?branch=main)](https://github.com/cloudcraft/cloudcraft-python/actions?query=branch%3Amain)
+[![Build Status](https://github.com/DataDog/cloudcraft-python/actions/workflows/build.yaml/badge.svg?branch=main)](https://github.com/DataDog/cloudcraft-python/actions?query=branch%3Amain)
 
 ![Cloudcraft diagram](https://static.cloudcraft.co/sdk/cloudcraft-sdk-example-1.svg)
 
