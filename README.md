@@ -1,15 +1,28 @@
 # Cloudcraft API Client for Python
 
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache2.0-yellow.svg)](LICENSE.md)
-[![versions](https://img.shields.io/pypi/pyversions/pybadges.svg)](https://www.python.org/downloads/release/python-3100/)
+[![versions](https://img.shields.io/pypi/pyversions/cloudcraftco)](https://www.python.org/downloads/release/python-3100/)
 [![Build Status](https://github.com/cloudcraft/cloudcraft-python/actions/workflows/build.yaml/badge.svg?branch=main)](https://github.com/cloudcraft/cloudcraft-python/actions?query=branch%3Amain)
 
-The Cloudcraft Python library provides convenient access to the Cloudcraft API from
-applications written in Python.
+![Cloudcraft diagram](https://static.cloudcraft.co/sdk/cloudcraft-sdk-example-1.svg)
+
+Visualize your cloud architecture with Cloudcraft by Datadog, [the best way to create smart AWS and Azure diagrams](https://www.cloudcraft.co/).
+
+Cloudcraft supports both manual and programmatic diagramming, as well as automatic reverse engineering of existing cloud environments into
+beautiful system architecture diagrams.
+
+This `cloudcraftco` Python library provides an easy-to-use native Python SDK for interacting with [the Cloudcraft API](https://developers.cloudcraft.co/).
+
+Use case examples:
+- Snapshot and visually compare your live AWS or Azure environment before and after a deployment, in your app or as part of your automated CI pipeline
+- Download an inventory of all your cloud resources from a linked account as JSON
+- Write a converter from a third party data format to Cloudcraft diagrams
+- Backup, export & import your Cloudcraft data
+- Programmatically create Cloudcraft diagrams
+
+This SDK requires a [Cloudcraft API key](https://developers.cloudcraft.co/#authentication) to use. [A free trial of Cloudcraft Pro](https://www.cloudcraft.co/pricing) with API access is available.
 
 ## Requirements
-
-Client requirement...
 
  - Python 3.10
  - Requests 2.28
@@ -19,15 +32,10 @@ Client requirement...
 ```
 python -m pip install cloudcraftco
 ```
-[TBD - standard pypi install, package name is preliminary]
-[see https://docs.python.org/3/installing/index.html]
 
 ## Usage
 
-The API is accessed through the `Cloudcraft` class. An API key available through
-the Cloudcraft user interface is required when instantiating `Cloudcraft`. It
-can be passed to the class as an argument or through the `CLOUDCRAFT_API_KEY`
-environment variable:
+The API is accessed through the `Cloudcraft` class. An API key available through the Cloudcraft user interface is required when instantiating `Cloudcraft`. It can be passed to the class as an argument or through the `CLOUDCRAFT_API_KEY` environment variable:
 
 ```python
 from cloudcraftco import Cloudcraft
