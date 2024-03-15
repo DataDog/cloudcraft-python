@@ -23,11 +23,5 @@ cloudcraft = Cloudcraft()
 % poetry shell
 % poetry install
 % export CLOUDCRAFT_API_KEY={{ api-key }}
-% export CLOUDCRAFT_TEST_ROLE={{ your-test-role-arn }}
-% python3 dev_playgrounds/accounts.py
-% python3 dev_playgrounds/blueprints.py
-% python3 dev_playgrounds/budgets.py
-% python3 dev_playgrounds/exports.py
-% python3 dev_playgrounds/snapshots.py
 % python3 dev_playgrounds/users.py
 ```
