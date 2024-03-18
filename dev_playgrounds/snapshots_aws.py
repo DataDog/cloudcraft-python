@@ -4,19 +4,21 @@ from cloudcraftco.cloudcraft import Cloudcraft
 
 # AWS Account snapshot exporting...
 # aka scanning account, then exporting auto-layout blueprint
+# snapshots_aws.py requires existing aws accounts
 #
 # running playground...
 # % cd {repo_directory}
 # % poetry shell
 # % poetry install
-# % python3 dev_playgrounds/snapshots.py
+# % export CLOUDCRAFT_API_KEY={{ api-key }}
+# % python3 dev_playgrounds/snapshots_aws.py
 
 cloudcraft = Cloudcraft({"host": "localhost", "port": 3000, "protocol": "http"})
 script_dir = os.path.dirname(os.path.realpath(__file__)) + os.sep
 
 # list aws accounts
 accounts = cloudcraft.list_aws_accounts()
-ss_account = accounts["accounts"][1]["id"]
+ss_account = accounts["accounts"][0]["id"]
 print("ss_account :: " + ss_account)
 print("script_dir :: " + script_dir)
 print("******************************************\n")

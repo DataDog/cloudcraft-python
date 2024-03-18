@@ -7,6 +7,7 @@ from cloudcraftco.cloudcraft import Cloudcraft
 # % cd {repo_directory}
 # % poetry shell
 # % poetry install
+# % export CLOUDCRAFT_API_KEY={{ api-key }}
 # % python3 dev_playgrounds/users.py
 
 cloudcraft = Cloudcraft({"host": "localhost", "port": 3000, "protocol": "http"})
