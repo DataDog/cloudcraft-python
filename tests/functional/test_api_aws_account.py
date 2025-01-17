@@ -14,8 +14,8 @@ cloudcraft = Cloudcraft()
 test_role_arn = os.environ.get("CLOUDCRAFT_TEST_ROLE")
 
 
-def test_account_api():
-    """Test account api."""
+def test_aws_account_api():
+    """Test aws account api."""
     # read aws role parameters
     aws_params = cloudcraft.read_aws_role_parameters()
     assert aws_params.get("accountId") != None

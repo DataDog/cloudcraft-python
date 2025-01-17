@@ -2,11 +2,16 @@ import os
 
 from .api_account import (
     create_aws_account_handler,
+    create_azure_account_handler,
     delete_aws_account_handler,
+    delete_azure_account_handler,
     list_aws_accounts_hander,
+    list_azure_accounts_handler,
     read_aws_role_parameters_handler,
     snapshot_aws_account_handler,
+    snapshot_azure_account_handler,
     update_aws_account_handler,
+    update_azure_account_handler,
 )
 from .api_blueprint import (
     create_blueprint_handler,
@@ -195,6 +200,47 @@ class Cloudcraft:
         # expected: [200, 202, 401, 403, 404, 429]
         response = snapshot_aws_account_handler(
             self, account_id, region, ss_format, options
+        )
+        Cloudcraft.check_errors(response, {400, 401, 403, 404, 429})
+        if response.status_code == 202:
+            return {"snapshot_status": "processing"}
+        else:
+            return response.content
+
+    # API - Azure Account
+    def list_azure_accounts(self):
+        """List Azure accounts via api request."""
+        # expected: [200, 401, 429]
+        response = list_azure_accounts_handler(self)
+        Cloudcraft.check_errors(response)
+        return response.json()
+
+    def create_azure_account(self, data):
+        """Create Azure account via api request."""
+        # expected: [201, 401, 403, 429]
+        response = create_azure_account_handler(self, data)
+        Cloudcraft.check_errors(response, {401, 403, 429})
+        return response.json()
+
+    def update_azure_account(self, account_id, data):
+        """Update Azure account via api request."""
+        # expected: [200, 401, 403, 404, 429]
+        response = update_azure_account_handler(self, account_id, data)
+        Cloudcraft.check_errors(response, {400, 401, 403, 404, 429})
+        return response.json()
+
+    def delete_azure_account(self, account_id):
+        """Delete Azure account via api request."""
+        # expected: [204, 401, 403, 404, 429]
+        response = delete_azure_account_handler(self, account_id)
+        Cloudcraft.check_errors(response, {400, 401, 403, 404, 429})
+        return
+
+    def snapshot_azure_account(self, account_id, location, ss_format, options=None):
+        """Export Azure account snapshot via api request."""
+        # expected: [200, 202, 401, 403, 404, 429]
+        response = snapshot_azure_account_handler(
+            self, account_id, location, ss_format, options
         )
         Cloudcraft.check_errors(response, {400, 401, 403, 404, 429})
         if response.status_code == 202:

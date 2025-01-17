@@ -3,11 +3,13 @@ import os
 from cloudcraftco.cloudcraft import Cloudcraft
 
 # Blueprint exporting
+# exports.py requires existing blueprints
 #
 # running playground...
 # % cd {repo_directory}
 # % poetry shell
 # % poetry install
+# % export CLOUDCRAFT_API_KEY={{ api-key }}
 # % python3 dev_playgrounds/exports.py
 
 cloudcraft = Cloudcraft({"host": "localhost", "port": 3000, "protocol": "http"})

@@ -30,7 +30,7 @@ This SDK requires a [Cloudcraft API key](https://developers.cloudcraft.co/#authe
 ## Installation
 
 ```
-python -m pip install cloudcraftco
+python3.10 -m pip install cloudcraftco
 ```
 
 ## Usage
@@ -38,8 +38,9 @@ python -m pip install cloudcraftco
 The API is accessed through the `Cloudcraft` class. An API key available through the Cloudcraft user interface is required when instantiating `Cloudcraft`. It can be passed to the class as an argument or through the `CLOUDCRAFT_API_KEY` environment variable:
 
 ```python
-from cloudcraftco import Cloudcraft
+from cloudcraftco.cloudcraft import Cloudcraft
 
+# assumes CLOUDCRAFT_API_KEY exported
 cloudcraft = Cloudcraft()
 
 profile = cloudcraft.read_user_profile()
@@ -52,7 +53,7 @@ profile = cloudcraft.read_user_profile()
 The package can be initialized with several options:
 
 ```python
-from cloudcraftco import Cloudcraft
+from cloudcraftco.cloudcraft import Cloudcraft
 
 cloudcraft = Cloudcraft({"api_key": "api-key-value", "timeout": 30000})
 ```
@@ -85,6 +86,9 @@ Options may also be specified by environment variable...
 #### List blueprints
 
 ```python
+from cloudcraftco.cloudcraft import Cloudcraft
+
+# assumes CLOUDCRAFT_API_KEY exported
 cloudcraft = Cloudcraft()
 
 blueprints = cloudcraft.list_blueprints()
@@ -93,6 +97,9 @@ blueprints = cloudcraft.list_blueprints()
 #### Retrieve blueprint
 
 ```python
+from cloudcraftco.cloudcraft import Cloudcraft
+
+# assumes CLOUDCRAFT_API_KEY exported
 cloudcraft = Cloudcraft()
 
 blueprint_id = "BLUEPRINT-ID" # valid blueprint uuid
@@ -102,6 +109,9 @@ blueprint = cloudcraft.read_blueprint(blueprint_id)
 #### Create blueprint
 
 ```python
+from cloudcraftco.cloudcraft import Cloudcraft
+
+# assumes CLOUDCRAFT_API_KEY exported
 cloudcraft = Cloudcraft()
 
 data = {"data": {"grid": "standard", "name": "New blueprint"}}
@@ -111,6 +121,9 @@ blueprint = cloudcraft.create_blueprint(data)
 #### Update blueprint
 
 ```python
+from cloudcraftco.cloudcraft import Cloudcraft
+
+# assumes CLOUDCRAFT_API_KEY exported
 cloudcraft = Cloudcraft()
 
 blueprint_id = "BLUEPRINT-ID" # valid blueprint uuid
@@ -118,9 +131,24 @@ data = {"data": {"grid": "standard", "name": "Updated blueprint"}}
 cloudcraft.update_blueprint(blueprint_id, data)
 ```
 
+#### Delete blueprint
+
+```python
+from cloudcraftco.cloudcraft import Cloudcraft
+
+# assumes CLOUDCRAFT_API_KEY exported
+cloudcraft = Cloudcraft()
+
+blueprint_id = "BLUEPRINT-ID" # valid blueprint uuid
+cloudcraft.delete_blueprint(blueprint_id)
+```
+
 #### Export blueprint as image
 
 ```python
+from cloudcraftco.cloudcraft import Cloudcraft
+
+# assumes CLOUDCRAFT_API_KEY exported
 cloudcraft = Cloudcraft()
 script_dir = os.path.dirname(os.path.realpath(__file__)) + os.sep
 
@@ -133,20 +161,14 @@ with open(bp_file, "wb") as binary_file:
     binary_file.write(export)
 ```
 
-#### Delete blueprint
-
-```python
-cloudcraft = Cloudcraft()
-
-blueprint_id = "BLUEPRINT-ID" # valid blueprint uuid
-cloudcraft.delete_blueprint(blueprint_id)
-```
-
 ### AWS Accounts
 
 #### Add AWS account
 
 ```python
+from cloudcraftco.cloudcraft import Cloudcraft
+
+# assumes CLOUDCRAFT_API_KEY exported
 cloudcraft = Cloudcraft()
 
 # role must exist and match your api_key/account
@@ -158,14 +180,57 @@ result = cloudcraft.create_aws_account(data)
 #### List AWS accounts
 
 ```python
+from cloudcraftco.cloudcraft import Cloudcraft
+
+# assumes CLOUDCRAFT_API_KEY exported
 cloudcraft = Cloudcraft()
 
 accounts = cloudcraft.list_aws_accounts()
 ```
 
+#### Update AWS account
+
+```python
+from cloudcraftco.cloudcraft import Cloudcraft
+
+# assumes CLOUDCRAFT_API_KEY exported
+cloudcraft = Cloudcraft()
+
+account_id = "AWS-ACCOUNT" # valid account uuid for api-key
+role = "AWS-ROLE" # valid role for AWS Account
+data = {"name": "Updated Playground AWS Account", "roleArn": role}
+result = cloudcraft.update_aws_account(account_id, data)
+```
+
+#### Delete AWS account
+
+```python
+from cloudcraftco.cloudcraft import Cloudcraft
+
+# assumes CLOUDCRAFT_API_KEY exported
+cloudcraft = Cloudcraft()
+
+account_id = "AWS-ACCOUNT" # valid account uuid for api-key
+cloudcraft.delete_aws_account(account_id)
+```
+
+#### Get my AWS IAM Role parameters
+
+```python
+from cloudcraftco.cloudcraft import Cloudcraft
+
+# assumes CLOUDCRAFT_API_KEY exported
+cloudcraft = Cloudcraft()
+
+iam_parameters = cloudcraft.read_aws_role_parameters()
+```
+
 #### Snapshot AWS account
 
 ```python
+from cloudcraftco.cloudcraft import Cloudcraft
+
+# assumes CLOUDCRAFT_API_KEY exported
 cloudcraft = Cloudcraft()
 script_dir = os.path.dirname(os.path.realpath(__file__)) + os.sep
 
@@ -179,32 +244,85 @@ with open(ss_file, "wb") as binary_file:
     binary_file.write(snapshot)
 ```
 
-#### Update AWS account
+### Azure Accounts
+
+#### Add Azure account
 
 ```python
+from cloudcraftco.cloudcraft import Cloudcraft
+
+# assumes CLOUDCRAFT_API_KEY exported
 cloudcraft = Cloudcraft()
 
-account_id = "AWS-ACCOUNT" # valid account uuid for api-key
-role = "AWS-ROLE" # valid role for AWS Account
-data = {"name": "Updated Playground AWS Account.", "roleArn": role}
-result = cloudcraft.update_aws_account(account_id, data)
+# id and secret values must be valid
+data = {
+    "name": "Azure Account",
+    "subscriptionId": "subscriptionId",
+    "directoryId": "directoryId",
+    "applicationId": "applicationId",
+    "clientSecret": "clientSecret"
+}
+result = cloudcraft.create_azure_account(data)
 ```
 
-#### Delete AWS account
+#### List Azure accounts
 
 ```python
+from cloudcraftco.cloudcraft import Cloudcraft
+
+# assumes CLOUDCRAFT_API_KEY exported
 cloudcraft = Cloudcraft()
 
-account_id = "AWS-ACCOUNT" # valid account uuid for api-key
-cloudcraft.delete_aws_account(account_id)
+accounts = cloudcraft.list_azure_accounts()
 ```
 
-#### Get my AWS IAM Role parameters
+#### Update Azure account
 
 ```python
+from cloudcraftco.cloudcraft import Cloudcraft
+
+# assumes CLOUDCRAFT_API_KEY exported
 cloudcraft = Cloudcraft()
 
-iam_parameters = cloudcraft.read_aws_role_parameters()
+account_id = "AZURE-ACCOUNT" # valid account uuid for api-key
+data = {
+    "name": "Updated Azure Account",
+    "subscriptionId": "subscriptionId",
+    "directoryId": "directoryId",
+    "applicationId": "applicationId",
+}
+result = cloudcraft.update_azure_account(account_id, data)
+```
+
+#### Delete Azure account
+
+```python
+from cloudcraftco.cloudcraft import Cloudcraft
+
+# assumes CLOUDCRAFT_API_KEY exported
+cloudcraft = Cloudcraft()
+
+account_id = "AZURE-ACCOUNT" # valid account uuid for api-key
+cloudcraft.delete_azure_account(account_id)
+```
+
+#### Snapshot Azure account
+
+```python
+from cloudcraftco.cloudcraft import Cloudcraft
+
+# assumes CLOUDCRAFT_API_KEY exported
+cloudcraft = Cloudcraft()
+script_dir = os.path.dirname(os.path.realpath(__file__)) + os.sep
+
+ss_account = "AZURE-ACCOUNT" # valid account uuid for api-key
+ss_location = "canadaeast"
+ss_format = "png"
+ss_file = script_dir + ss_location + "." + ss_format
+snapshot = cloudcraft.snapshot_azure_account(ss_account, ss_location, ss_format)
+
+with open(ss_file, "wb") as binary_file:
+    binary_file.write(snapshot)
 ```
 
 ### Budgets
@@ -212,6 +330,9 @@ iam_parameters = cloudcraft.read_aws_role_parameters()
 #### Export budget for a blueprint
 
 ```python
+from cloudcraftco.cloudcraft import Cloudcraft
+
+# assumes CLOUDCRAFT_API_KEY exported
 cloudcraft = Cloudcraft()
 script_dir = os.path.dirname(os.path.realpath(__file__)) + os.sep
 
@@ -229,6 +350,9 @@ with open(bp_file, "wb") as binary_file:
 #### Get Cloudcraft account info
 
 ```python
+from cloudcraftco.cloudcraft import Cloudcraft
+
+# assumes CLOUDCRAFT_API_KEY exported
 cloudcraft = Cloudcraft()
 
 profile = cloudcraft.read_user_profile()
@@ -264,14 +388,21 @@ Testing accounts requires care, since creating an account requires valid role.
 % cd {repo-directory}
 % poetry env use python3.10
 % poetry shell
+% poetry install
 % export CLOUDCRAFT_API_KEY={{ api-key }}
-% export CLOUDCRAFT_TEST_ROLE={{ your-test-role-arn }}
-% python3 dev_playgrounds/accounts.py
 % python3 dev_playgrounds/blueprints.py
 % python3 dev_playgrounds/budgets.py
 % python3 dev_playgrounds/exports.py
-% python3 dev_playgrounds/snapshots.py
+% python3 dev_playgrounds/snapshots_aws.py
+% python3 dev_playgrounds/snapshots_azure.py
 % python3 dev_playgrounds/users.py
+% export CLOUDCRAFT_TEST_ROLE={{ your-role-arn }}
+% python3 dev_playgrounds/accounts_aws.py
+% export CLOUDCRAFT_TEST_SUBSCRIPTION={{ your-subscription-id }}
+% export CLOUDCRAFT_TEST_DIRECTORY={{ your-directory-id }}
+% export CLOUDCRAFT_TEST_APPLICATION={{ your-application-id }}
+% export CLOUDCRAFT_TEST_SECRET={{ your-client-secret }}
+% python3 dev_playgrounds/accounts_azure.py
 ```
 
 ### Running Tests
