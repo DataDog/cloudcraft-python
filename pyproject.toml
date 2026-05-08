@@ -30,10 +30,10 @@ classifiers = [
 
 [tool.poetry.dependencies]
 python = "^3.10"
-requests = "^2.3.2"
+requests = "^2.33.1"
 
 [tool.poetry.dev-dependencies]
-pytest = "^8.3.0"
+pytest = "^8.3.5"
 black = "^24.0.0"
 isort = "^5.13.0"
 pytest-mock = "^3.14.0"
